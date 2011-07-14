@@ -1,0 +1,62 @@
+YubiKey CLI Tools
+=================
+
+:Author: Garry Dolley
+:Date: 07-14-2011
+
+A collection of shell scripts for working with Yubico's YubiKey products on the
+command line.
+
+Requirements
+------------
+
+ * A YubiKey (http://www.yubico.com/yubikey)
+
+Usage
+-----
+
+Scripts:
+
+  * verify.sh
+
+(That's it for now)
+
+Run the scripts without arguments to see the options.
+
+Example OTP verification (first 12 chars hidden)::
+
+  $ ./verify.sh ____________njggegulrlldinifncbvcvunblbncdcr
+  $ echo $?
+  0
+  $
+
+A return value of zero means valid OTP.  Run without arguments to see all
+possible return values.
+
+Author
+------
+
+Garry C. Dolley
+
+gdolley [at] NOSPAM- ucla.edu
+
+AIM: garry97531
+
+IRC: I am up_the_irons on Freenode.
+
+Formatting
+----------
+
+This README is formatted in reStructredText [RST]_.  It has the best
+correlation between what a document looks like as plain text vs. its
+formatted output (HTML, LaTeX, etc...).  What I like best is, markup
+doesn't look like markup, even though it is.
+
+.. [RST] http://docutils.sourceforge.net/rst.html
+
+Copyright
+---------
+
+Copyright (c) 2011 ARP Networks, Inc.
+
+Released under the MIT license.
