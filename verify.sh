@@ -10,7 +10,9 @@ usage() {
   echo ""
   echo "Usage:"
   echo ""
-  echo "  $0 <yubikey-otp>"
+  echo "  $0 <yubikey-otp> [verbose]"
+  echo ""
+  echo "If a non-zero length second argument is supplied, the OTP status is output to STDOUT"
   echo ""
   echo "Exit Status:"
   echo ""
@@ -22,6 +24,7 @@ usage() {
 }
 
 OTP=$1
+VERBOSE=$2
 
 if [ -z "$OTP" ]; then
   usage
@@ -39,7 +42,10 @@ URL="$API_URL/$API_CMD?id=$API_ID&otp=$OTP"
 
 STATUS=$(curl -s $URL | grep ^status= | sed "s/^status=\(.*\)$/\1/")
 
-echo $STATUS
+if [ -n "$VERBOSE" ]; then
+  echo $STATUS
+fi
+
 case "$STATUS" in
   OK*)
     exit 0
