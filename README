@@ -11,6 +11,7 @@ Requirements
 ------------
 
  * A YubiKey (http://www.yubico.com/yubikey)
+ * curl
 
 Usage
 -----
