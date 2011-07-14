@@ -21,6 +21,26 @@ bad_otp_test() {
   fi
 }
 
+replayed_otp_test() {
+  echo "Press your YubiKey button or [ENTER] to abort this test"
+  read OTP
+  if [ ! -z "$OTP" ]; then
+    # Verify it once
+    ../verify.sh $OTP > /dev/null 2>&1
+
+    # Now let's verify it again, it should come back as replayed
+    ../verify.sh $OTP > /dev/null 2>&1
+
+    if [ "$?" -eq 1 ]; then
+      echo "replayed_otp_test PASSED"
+    else
+      echo "replayed_otp_test FAILED"
+    fi
+  else
+    echo "replayed_otp_test SKIPPED"
+  fi
+}
+
 ok_otp_test() {
   echo "Press your YubiKey button or [ENTER] to abort this test"
   read OTP
@@ -38,4 +58,7 @@ ok_otp_test() {
 
 missing_arguments_test
 bad_otp_test
+replayed_otp_test
 ok_otp_test
+
+exit 0
